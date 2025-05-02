@@ -48,7 +48,11 @@ class AppGUI(ctk.CTk):
         self.label_status3.pack(pady=30)
 
         # Atualizar dados
-        self.update_data()
+        try:
+            self.update_data()
+        except Exception as e:
+            print(f"Erro: {e}")
+
 
     def update_data(self):
         if self.clp.is_connected():
