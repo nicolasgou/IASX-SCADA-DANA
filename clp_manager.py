@@ -31,7 +31,7 @@ class CLPClient:
         data = self.client.db_read(db_number, start_byte, 1)
         return get_bool(data, 0, bit_number)
 
-
+        
     def disconnect(self):
         self.client.disconnect()
 

@@ -1,5 +1,6 @@
 import customtkinter as ctk
 from clp_manager import CLPClient
+from db import insert_dados
 
 class AppGUI(ctk.CTk):
     def __init__(self, clp_client):
@@ -88,5 +89,13 @@ class AppGUI(ctk.CTk):
             
             status3 = self.clp.read_bool(db_number=2, start_byte=12, bit_number=2)
             self.label_status3.configure(text=f"Status 3: {status3}")
+        else:
+            pressao1 = 1.00
+            posicao1 = 2.00
+            status1 = True
+            try:
+                insert_dados(pressao1,posicao1,status1)
+            except Exception as e:
+                print(f"Erro na gravacao BD: {e}")
             
-        self.after(1000, self.update_data)  # Atualiza a cada 1 segundo
+        self.after(5000, self.update_data)  # Atualiza a cada 1 segundo
